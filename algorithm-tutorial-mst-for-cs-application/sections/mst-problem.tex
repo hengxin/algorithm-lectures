@@ -36,7 +36,7 @@
 	  \item[Input:] $G = (V, E, w)$
 	  \item[Divide:] $V = (S, V \setminus S)$; $||S| - |V \setminus S|| \le 1$ \uncover<2->{\textcolor{red}{(Cut)}}
 	  \item<3->[Conquer:] $T_1$: an MST of $S$; $T_2$: an MST of $V \setminus S$
-	  \item<4->[Combine:] $T_{1} + T_{2} + \set{e}$: $e$ is \textcolor{brown}{a} \textcolor{red}{\it lightest} edge across $(S, V \setminus S)$
+	  \item<4->[Combine:] $T_{1} + T_{2} + \set{e}$: $e$ is \textcolor{brown}{a} \textcolor{red}{\bf lightest} edge across $(S, V \setminus S)$
     \end{description}
   \end{exampleblock}
 
@@ -50,14 +50,14 @@
   \begin{alertblock}{What is wrong?}
 	\fignocaption{width = 0.30\textwidth}{figs/divide-conquer-mst-counterexample.pdf}
 
-	\centerline{\textcolor{brown}{The edges \textcolor{blue}{$bc$ and $ad$} do \textcolor{red}{\it not} belong to any MST.}}
+	\centerline{\textcolor{brown}{The edges \textcolor{blue}{$bc$ and $ad$} do \textcolor{red}{\bf not} belong to any MST.}}
   \end{alertblock}
 
   \pause
   \vspace{0.50cm}
 
   \begin{alertblock}{What if:}
-	\centerline{\textcolor{red}{Invariant:} Manages a set of edges $A$ which is a subset of \textcolor{red}{\it some} MST.}
+	\centerline{\textcolor{red}{Invariant:} Manages a set of edges $X$ which is a subset of \textcolor{red}{\bf some} MST.}
   \end{alertblock}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
