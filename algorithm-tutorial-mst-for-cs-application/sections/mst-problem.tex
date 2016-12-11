@@ -2,39 +2,40 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Minimum Spanning Tree}
-  \begin{definition}[MST]
-	Given:
-	\begin{itemize}
-	  \item connected, undirected, weighted graph $G = (V, E)$
-	  \item edge weight $w(e)$
-	\end{itemize}
-    
-	\pause
-	\vspace{0.30cm}
+  $G = (V, E)$: connected, undirected, weighted graph ($w(e)$)
 
-	Spanning tree $T = (V, E_{T} \subseteq E)$:
-	\begin{itemize}
-	  \item connected, acyclic \pause ($n-1$ edges)
-		\pause
-	  \item $w(T) = \sum_{e \in T} w(e)$
-	\end{itemize}
+  \importikznocaption{0.40\textwidth}{0.80\textwidth}{tikz-in-beamer/spanning-tree-example-overlay.tex}
+  
+  \pause
+  \vspace{0.30cm}
 
-	\pause
-	\vspace{0.80cm}
-	\centerline{MST: Mimimize $w(T)$ over all possible STs}
-  \end{definition}
+  Spanning tree $T = (V, E' \subseteq E)$: connected, acyclic \pause ($\Rightarrow n-1$ edges)
+
+  \vspace{0.20cm}
+  \uncover<6->{
+	\[
+	  w(T) = \sum\limits_{e \in E'} w(e)
+	\]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Minimum Spanning Tree}
-  \begin{exampleblock}{MST Example}
-  \end{exampleblock}
+  % \begin{center}
+  %   MST: Mimimize $w(T)$ over all possible STs
+  % \end{center}
+
+  \[
+	\text{MST:} \quad \mathop{\mathrm{arg\,min}}_{T} \; w(T)
+  \]
+
+  \importikznocaption{0.60\textwidth}{0.80\textwidth}{tikz-in-beamer/mst-example-overlay.tex}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{A Wrong Algorithm}
   \begin{exampleblock}{Wrong divide-and-conquer algorithm for MST}
     \begin{description}
 	  \item[Input:] $G = (V, E, w)$
-	  \item[Divide:] $V = (S, V \setminus S)$; $||S| - |V \setminus S|| \le 1$ \uncover<2->{\textcolor{red}{(Cut)}}
+	  \item[Divide:] $V = (S, V \setminus S)$; $\large| |S| - |V \setminus S| \large| \le 1$ \uncover<2->{\textcolor{red}{(Cut)}}
 	  \item<3->[Conquer:] $T_1$: an MST of $S$; $T_2$: an MST of $V \setminus S$
 	  \item<4->[Combine:] $T_{1} + T_{2} + \set{e}$: $e$ is \textcolor{brown}{a} \textcolor{red}{\bf lightest} edge across $(S, V \setminus S)$
     \end{description}

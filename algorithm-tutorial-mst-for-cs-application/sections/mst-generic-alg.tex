@@ -3,54 +3,49 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Generic MST Algorithm}
   \begin{description}
-	\setlength{\itemsep}{8pt}
+	\setlength{\itemsep}{5pt}
 	\item<1->[Overview:] Grow the MST one edge at a time
 	\item<2->[State:] Manage a set of edges $X$
-	\item<3->[\textcolor{red}{\bf Invariant:}] Prior to each iteration, $X$ is a subset of some MST
-	\item<4->[Iteration:] Pick \only<4>{an edge}\only<5->{a \textcolor{red}{\bf safe} edge} $e$ s.t. \\ $X \cup \set{e}$ is also a subset of some MST
+	\item<3->[\textcolor{red}{\bf Invariant:}] $X$ is a subset of some MST
+	\item<4->[Init:] $X = \emptyset$
+	\item<5->[Iteration:] Find \only<5>{an edge}\only<6->{a \textcolor{red}{\bf safe} edge} $e$ {\it s.t.} 
+	  \\ $X \cup \set{e}$ is also a subset of some MST
+	\item<7->[Termination:] $(n-1)$ iterations
   \end{description}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]{The Generic MST Algorithm}
-  
 
-  \begin{proof}
-	\begin{description}[Initialization:]
-	  \item[Initialization:]
-	  \item[Maintenance:] 
-	  \item[Termination:] 
-	\end{description}
-  \end{proof}
+  \vspace{0.20cm}
+  \uncover<8->{
+	\begin{center}
+	  \textcolor{brown}{\large How to find a safe $e$ for $X$ in each iteration?}
+	\end{center}
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Cut Property}
-  \begin{block}{Cut Property}
+	Given that $X$ is part of some MST:
+	\vspace{0.10cm}
     \begin{itemize}
-	  \item Graph $G = (V, E)$; $X$ is part of an MST.
-	  \item A cut $(S, V \setminus S)$ \textcolor{red}{\bf respecting} $X$ ($X$ does not cross
-	  $(S, V \setminus S)$)
-	  \item Let $e$ be a lightest edge across $(S, V \setminus S)$
+	  \setlength{\itemsep}{3pt}
+      \item<2-> A cut $(S, V \setminus S)$ \textcolor{red}{\bf respecting} $X$ ($X$ does not cross $(S, V \setminus S)$)
+	  \item<6-> $e$: a lightest edge across $(S, V \setminus S)$
 	\end{itemize}
-	Then, $X + \set{e}$ is part of some MST $T$.
-  \end{block}
+	\vspace{0.10cm}
+	Then, $X + \set{e}$ is also a part of some MST.
 
-  \begin{exampleblock}{}
-  \end{exampleblock}
+  \importikznocaption{0.50\textwidth}{0.50\textwidth}{tikz-in-beamer/cut-property-example-overlay.tex}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Cut Property}
   \fignocaption{width = 0.40\textwidth}{figs/cut-property-no-name.pdf}
 
-  \begin{proof}
-    Basic idea: $e \notin T \Rightarrow e \in T'$.
-	\begin{itemize}
-	  \item $T + \set{e}$ to construct a cycle $C$
-	  \item $\exists e'\in C$ such that $e'$ across the cut; $w(e')
-	  \geq w(e)$
-	  \item $T' = T + \set{e} - \set{e'}$
-	  \item $w(T') \le w(T) \Rightarrow w(T') = w(T) \Rightarrow T' \textrm{ is
-	  an MST}$
-	\end{itemize}
-  \end{proof}
+  Basic idea: $e \notin T \Rightarrow e \in T'$.
+  \begin{itemize}
+    \item $T + \set{e}$ to construct a cycle $C$
+    \item $\exists e'\in C$ such that $e'$ across the cut; $w(e')
+    \geq w(e)$
+    \item $T' = T + \set{e} - \set{e'}$
+    \item $w(T') \le w(T) \Rightarrow w(T') = w(T) \Rightarrow T' \textrm{ is
+    an MST}$
+  \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

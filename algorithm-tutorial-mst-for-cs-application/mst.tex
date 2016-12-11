@@ -17,7 +17,15 @@
 \usepackage{graphicx, subcaption}
 \usepackage[export]{adjustbox}
 
-\usepackage[framemethod=TikZ]{mdframed}
+% needed: \usepackage[export]{adjustbox}
+\newcommand{\importikznocaption}[3]{% #1: width, #2: height, #3: tex
+\begin{figure}[h!]
+    \centering
+    \begin{adjustbox}{max totalsize = {#1}{#2}, center}
+	  \input{#3}
+    \end{adjustbox}
+  \end{figure}
+}
 
 \usepackage[normalem]{ulem} % strike through text
 \newcommand{\soutthick}[1]{%
@@ -28,13 +36,31 @@
 
 \setbeamersize{text margin left = 2em, text margin right = 1em}
 \setbeamercolor{footnote mark}{fg = teal}
-\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{itemize items}[square]
+% \setbeamertemplate{itemize items}[default]
 \setbeamertemplate{enumerate items}[default]
+\newcommand\coloreditem[1]{\item[\textcolor{#1}{\usebeamertemplate{itemize \beameritemnestingprefix item}}]}
 
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta, shapes, positioning, calc, backgrounds, fit}
+\usetikzlibrary{mindmap, arrows.meta, shapes, positioning, calc, backgrounds, fit}
 
 \theoremstyle{plain}
+
+\lstdefinestyle{code}{
+  language = Java,
+  basicstyle = \ttfamily\footnotesize,
+  captionpos = t,
+  mathescape = true,
+  showstringspaces = false,
+  keywordstyle = \color{blue}\bfseries,
+  commentstyle = \color{teal},
+  stringstyle = \color{green}\bfseries,
+  numbers = left,
+  numberstyle = \tiny,
+  upquote = true, 
+  frame = lines,
+  breaklines = true
+}
 
 % for tables
 \usepackage{multirow}
@@ -100,17 +126,6 @@
 }
 %%%%%%%%%%%%%%%%%%%%
 \begin{document}
-
-% mdf: mdframed; #1: frame color; #2: frame title color; #3: frame title; #4: text
-\newcommand{\mdf}[4]{
-\begin{mdframed}[frametitle={
-  \tikz[baseline = (current bounding box.east), outer sep = 0pt]
-  \node[anchor = east, rectangle, fill = #1!20, font = \small]{\strut \textcolor{#2}{#3}};},
-  innertopmargin = 2pt, linecolor = #1!20, linewidth = 2pt, topline = true,
-  frametitleaboveskip=\dimexpr-\ht\strutbox\relax]
-  #4
-\end{mdframed}
-}
 
 \maketitle
 

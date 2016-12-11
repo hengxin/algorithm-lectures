@@ -1,1 +1,64 @@
-\section{The Algorithms of Kruskal and Prim}	\label{section:mst-algs}
+\section{Kruskal's and Prim's Algorithms}	\label{section:mst-algs}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Kruskal's Algorithm}
+  \begin{lstlisting}[style = code]
+  sort (non-descreasingly) the edges $E$
+
+  $X = \emptyset$
+  for $e \in E$ in non-descreasing order
+    if $X \cup \set{e}$ does not produce cycle
+       $X \gets X \cup \set{e}$
+  \end{lstlisting}
+
+  \importikznocaption{0.45\textwidth}{0.70\textwidth}{tikz-in-beamer/mst-kruskal-example-overlay.tex}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Kruskal's Algorithm}
+  \begin{description}
+	\item[State:] forest $\triangleq$ a collection of connected components
+	\item[Ops:] on connected components
+	  \begin{itemize}
+		\item cycle detection
+		\item union two CCs
+	  \end{itemize}
+  \end{description}
+
+  \pause
+
+  \begin{center}
+	Using the \textcolor{red}{\bf disjoint-set} data structure.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Prim's Algorithm}
+  \begin{lstlisting}[style = code]
+  $X = \emptyset$
+  $S = \set{s}$    // pick any $s \in V$
+  $R = V \setminus S$
+  while $R \neq \emptyset$
+    $e = (u,v) \gets$ a lightest edge across $(S, R)$ 
+    $X \gets X \cup \set{e}$
+    $S \gets S \cup \set{u} \quad R \gets R \setminus \set{v}$
+  \end{lstlisting}
+
+  \importikznocaption{0.45\textwidth}{0.70\textwidth}{tikz-in-beamer/mst-prime-example-overlay.tex}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Prim's Algorithm}
+  \begin{description}
+	\item[State:] a growing tree (CC)
+	\item[Op:] identifying a lightest edge
+  \end{description}
+
+  \pause
+
+  \begin{center}
+	Using the \textcolor{red}{\bf priority-queue (min-heap)} data structure.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%

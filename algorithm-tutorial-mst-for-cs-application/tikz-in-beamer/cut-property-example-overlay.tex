@@ -1,0 +1,52 @@
+% Underlying graph for minimum spanning tree (mst) example
+% Redrawn from Figure 5.3 of the textbook ``Algorithms'' by Dasgupta
+
+\begin{tikzpicture}[node distance = {1.0cm and 1.5cm}, 
+	v/.style = {draw, circle},
+    cpv/.style = {v, fill = teal},	% vertices in cut property example
+    cpe/.style = {circle connection bar, brown, fill}, % edges in cut property example
+	cut/.style = {rectangle, rounded corners, dashed, draw, thick}	% cut
+	]
+	% the nodes
+    \node (a) [v] {A};
+    \node (c) [v, right = of a] {C};
+    \node (e) [v, right = of c] {E};
+    \node (b) [v, below = of a] {B};
+    \node (d) [v, right = of b] {D};
+    \node (f) [v, right = of d] {F};
+
+	% edges
+    \draw (a) to node[above] {1} (c);
+    \draw (c) to node[above] {3} (e);
+    \draw (b) to node[below] {1} (d);
+    \draw (d) to node[below] {4} (f);
+    \draw (a) to node[left] {2} (b);
+    \draw (c) to node[below] {2} (b);
+    \draw (c) to node[right] {2} (d);
+    \draw (e) to node[below] {3} (d);
+    \draw (e) to node[right] {1} (f);
+
+	% edges X
+	\foreach \v in {a, b, c, d}{
+	  \node[cpv] at (\v) {\MakeUppercase{\v}};
+	}
+	\draw[cpe] (a) to (c);
+	\draw[cpe] (b) to (d);
+
+	% cut 1 (respecting X)
+	\begin{pgfonlayer}{background}
+	  \node<3> () [cut, cyan, fit = (a) (b) (c) (d), label = {below:$S$}] {};
+	  \node<3> () [cut, cyan, fit = (e) (f), label = {below:$V \setminus S$}] {};
+	\end{pgfonlayer}
+
+	\begin{pgfonlayer}{background}
+	  \node<5-> () [cut, blue, fit = (a) (c) (e), label = {above:$S$}] {};
+	  \node<5-> () [cut, blue, fit = (b) (d) (f), label = {below:$V \setminus S$}] {};
+	\end{pgfonlayer}
+	\only<7->{\draw[cpe] (e) to (f);}
+
+    \begin{pgfonlayer}{background}
+      \node<4> () [cut, red, fit = (a) (b), label = {below:$S$}] {};
+      \node<4> () [cut, red, fit = (c) (d) (e) (f), label = {below:$V \setminus S$}] {};
+    \end{pgfonlayer}
+\end{tikzpicture}
