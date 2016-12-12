@@ -6,6 +6,8 @@
   v'/.style = {v, fill = teal},	% chosen by kruskal's algorithm
   ke/.style = {circle connection bar, brown, fill},	% kruskal edge
   nke/.style = {gray, dash pattern = on 5pt off 3pt, ultra thick},	% non-kruskal edge which would cause cycle
+  cut/.style = {rectangle, rounded corners, dashed, draw, thick},	% cut
+  ncut/.style = {circle, draw, thick, red, dashed, minimum size = 30pt}  % not respecting
 ]
   \node (a) [v] {A};
   \node (c) [v, right = of a] {C};
@@ -32,8 +34,22 @@
   \only<4->{\draw[ke] (e) to (f); \node [v'] at (e) {E}; \node [v'] at (f) {F};}
   \only<5->{\draw[ke] (a) to (b); \node [v'] at (b) {B};}
 
-  \only<6->{\draw[nke] (b) to (c);}
-  \only<7->{\draw[nke] (c) to (d);}
+  % bc and cd will cause cycles
+  \only<6-10>{\draw[nke] (b) to (c);}
+  \only<7-9>{\draw[nke] (c) to (d);}
 
-  \only<8->{\draw[ke] (c) to (e);}
+  % adding ce for the cut property
+  \begin{pgfonlayer}{background}
+	\uncover<8-9>{\node<8-> () [cut, blue, fit = (a) (b) (c) (d)] {};}
+	\uncover<8-9>{\node<8-> () [cut, blue, fit = (e) (f)] {};}
+  \end{pgfonlayer}
+
+  \only<9-9>{\draw[ke] (c) to (e);}
+
+  % explaining cycles in terms of the cut property
+  % \draw (c) arc (135:-45:0.5);
+  \uncover<11->{
+    \node [ncut, label = {above:$\in S$}] at (c) {};
+    \node [ncut, label = {below:$\in V \setminus S$}] at (b) {};
+  }
 \end{tikzpicture}

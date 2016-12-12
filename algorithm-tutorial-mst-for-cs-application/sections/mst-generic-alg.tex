@@ -22,7 +22,7 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Cut Property}
-	Given that $X$ is part of some MST:
+	Given that $X$ is part of some MST $T$:
 	\vspace{0.10cm}
     \begin{itemize}
 	  \setlength{\itemsep}{3pt}
@@ -30,22 +30,27 @@
 	  \item<6-> $e$: a lightest edge across $(S, V \setminus S)$
 	\end{itemize}
 	\vspace{0.10cm}
-	Then, $X + \set{e}$ is also a part of some MST.
+	Then, $X + \set{e}$ is also a part of some MST $T'$.
 
   \importikznocaption{0.50\textwidth}{0.50\textwidth}{tikz-in-beamer/cut-property-example-overlay.tex}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{The Cut Property}
-  \fignocaption{width = 0.40\textwidth}{figs/cut-property-no-name.pdf}
+  \begin{enumerate}
+	\item<1-> $X \subseteq T, \textcolor{blue}{e \in T} \Rightarrow X + \set{e} \subseteq T$
+	\item<2-> $X \subseteq T, \textcolor{red}{e \notin T} \Rightarrow X + \set{e} \subseteq T'$.
+  \end{enumerate}
 
-  Basic idea: $e \notin T \Rightarrow e \in T'$.
+  \vspace{-0.30cm}
+
+  \importikznocaption{0.35\textwidth}{0.35\textwidth}{tikz-in-beamer/cut-property-proof-clrs-overlay.tex}
+
   \begin{itemize}
-    \item $T + \set{e}$ to construct a cycle $C$
-    \item $\exists e'\in C$ such that $e'$ across the cut; $w(e')
-    \geq w(e)$
-    \item $T' = T + \set{e} - \set{e'}$
-    \item $w(T') \le w(T) \Rightarrow w(T') = w(T) \Rightarrow T' \textrm{ is
-    an MST}$
+	\item<5-> $T + \set{e} \Longrightarrow$ cycle $C$ ($uv + P_{u \leadsto v}$)
+	\item<6-> $\exists e' \in P_{u \leadsto v} \colon e'$ across the cut; $w(e') \geq w(e)$
+    \item<7-> $T' = T + \set{e} - \set{e'}$ is an ST
+    \item<8-> $w(T') \le w(T) \Rightarrow T' \textrm{ is an MST}$
+	\item<9-> $e' \notin X {\scriptsize (\textcolor{red}{\bf respect})} \Rightarrow X + \set{e} \subseteq T'$
   \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
