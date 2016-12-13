@@ -31,15 +31,34 @@
   \importikznocaption{0.60\textwidth}{0.80\textwidth}{tikz-in-beamer/mst-example-overlay.tex}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{A Wrong Algorithm}
-  \begin{exampleblock}{Wrong divide-and-conquer algorithm for MST}
-    \begin{description}
-	  \item[Input:] $G = (V, E, w)$
-	  \item[Divide:] $V = (S, V \setminus S)$; $\large| |S| - |V \setminus S| \large| \le 1$ \uncover<2->{\textcolor{red}{(Cut)}}
-	  \item<3->[Conquer:] $T_1$: an MST of $S$; $T_2$: an MST of $V \setminus S$
-	  \item<4->[Combine:] $T_{1} + T_{2} + \set{e}$: $e$ is \textcolor{brown}{a} \textcolor{red}{\bf lightest} edge across $(S, V \setminus S)$
-    \end{description}
-  \end{exampleblock}
+\begin{frame}{A Simple Property}
+  \fignocaption{width = 0.45\textwidth}{figs/mst-simple-property.pdf}
+
+  \begin{center}
+	\textcolor{red}{\bf Cut:} $V = (S, V \setminus S)$
+  \end{center}
+
+  \pause
+
+  \begin{enumerate}
+	\item MST in each connected component
+	\item $ce$: \textcolor{brown}{a} \textcolor{red}{\bf lightest} edge across cut
+  \end{enumerate}
+
+  \pause
+
+  \begin{center}
+	\textcolor{brown}{\bf Copy\&Paste Argument; Exchange Argument}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{A Wrong Divide \& Conquer Algorithm}
+  \begin{description}
+    \item[Input:] $G = (V, E, w)$
+    \item[Divide:] $V = (S, V \setminus S)$; $\large| |S| - |V \setminus S| \large| \le 1$
+    \item<2->[Conquer:] $T_1$: an MST of $S$; $T_2$: an MST of $V \setminus S$
+    \item<3->[Combine:] $T_{1} + T_{2} + \set{e}$: $e$ is a lightest edge across $(S, V \setminus S)$
+  \end{description}
 
   \pause
   \vspace{0.50cm}
