@@ -1,0 +1,141 @@
+\documentclass[shownotes, xcolor = table]{beamer}
+
+\usepackage{xifthen}
+\usepackage{verbatim}
+\usepackage{listings}
+
+\usetheme{CambridgeUS} % try Madrid, CambridgeUS
+\usecolortheme{beaver} % try beaver, dolphin, seahorse
+\usefonttheme{serif}
+% \usefonttheme[onlymath]{serif} % try professionalfonts, serif
+
+\usepackage{amsmath, amsfonts, amssymb, mathtools, pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\def\checkmark{\tikz\fill[scale=0.5](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\usepackage{graphicx, subcaption}
+\usepackage[export]{adjustbox}
+
+% needed: \usepackage[export]{adjustbox}
+\newcommand{\importikznocaption}[3]{% #1: width, #2: height, #3: tex
+\begin{figure}[h!]
+    \centering
+    \begin{adjustbox}{max totalsize = {#1}{#2}, center}
+	  \input{#3}
+    \end{adjustbox}
+  \end{figure}
+}
+
+\usepackage[normalem]{ulem} % strike through text
+\newcommand{\soutthick}[1]{%
+    \renewcommand{\ULthickness}{2.0pt}%
+       \sout{#1}%
+    \renewcommand{\ULthickness}{.4pt}% Resetting to ulem default
+}
+
+\setbeamersize{text margin left = 2em, text margin right = 1em}
+\setbeamercolor{footnote mark}{fg = teal}
+\setbeamertemplate{itemize items}[square]
+% \setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\newcommand\coloreditem[1]{\item[\textcolor{#1}{\usebeamertemplate{itemize \beameritemnestingprefix item}}]}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap, arrows.meta, shapes, positioning, calc, backgrounds, fit}
+
+\theoremstyle{plain}
+
+\lstdefinestyle{code}{
+  language = Java,
+  basicstyle = \ttfamily\footnotesize,
+  captionpos = t,
+  mathescape = true,
+  showstringspaces = false,
+  keywordstyle = \color{blue}\bfseries,
+  commentstyle = \color{teal},
+  stringstyle = \color{green}\bfseries,
+  numbers = left,
+  numberstyle = \tiny,
+  upquote = true, 
+  frame = lines,
+  breaklines = true
+}
+
+% for tables
+\usepackage{multirow}
+\newcommand{\innercell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\usepackage{hhline}
+%%%%%%%%%%%%%% for appendix %%%%%%%%%%%%%%%%
+% http://www-ljk.imag.fr/membres/Jerome.Lelong/latex/appendixnumberbeamer.sty
+% Reference: http://tex.stackexchange.com/questions/2541/beamer-frame-numbering-in-appendix
+\usepackage{appendixnumberbeamer}
+% Add total frame count to slides, optional. From Stefan,
+% http://www.latex-community.org/forum/viewtopic.php?f=4&t=2173
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill\insertframenumber\,/\,\inserttotalframenumber}
+%%%%%%%%%%%%%% for appendix %%%%%%%%%%%%%%%%
+
+% for fig without caption: #1: width/size; #2: fig file
+\newcommand{\fignocaption}[2]{
+  \begin{figure}[htp]
+    \centering
+    \includegraphics[#1]{#2}
+  \end{figure}
+}
+
+% for fig without caption: #1: width/size; #2: fig file; #3: fig caption
+\newcommand{\fig}[3]{
+  \begin{figure}[htp]
+    \centering
+      \includegraphics[#1]{#2}
+      \caption{#3}
+  \end{figure}
+}
+
+% for cite: #1: author; #2: conference #3: year
+\newcommand{\citeinbeamer}[3]{{\tiny{\textcolor{blue}{[#1@#2'#3]}}}}
+
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{cs-application-report.bib}
+
+\newcommand{\term}[1]{\textcolor{blue}{\scriptsize (#1)}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\question}[1]{\textcolor{red}{\centerline{#1}}}
+\newcommand{\answer}[1]{\textcolor{blue}{\centerline {#1}}}
+\newcommand{\alertred}[1]{\textcolor{red}{#1}}
+\newcommand{\alertblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+\newcommand{\mathbfblue}[1]{\textcolor{blue}{$\mathbf{#1}$}}
+
+\newcommand{\reporttitle}{Bubble Sort}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\title[\reporttitle]{\reporttitle}
+\subtitle{(What are Algorithms and How to Analyze Algorithms)}
+
+\author[Hengfeng Wei]{Hengfeng Wei}
+\titlegraphic{\includegraphics[height = 1.2cm]{figs/nju-logo-purple.png}~\includegraphics[height = 1.2cm]{figs/cs-logo.jpg}}
+\institute[ICS@NJU]{Institute of Computer Software\\Nanjing University}
+\date{\today}
+
+\AtBeginSection[]{
+  \begin{frame}[noframenumbering, plain]
+    \frametitle{\reporttitle}
+    \tableofcontents[currentsection, sectionstyle=show/shaded, subsectionstyle=hide/hide/hide]
+  \end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+\begin{frame}[noframenumbering, plain]
+  \frametitle{\reporttitle}
+  \tableofcontents[currentsection, sectionstyle=show, subsectionstyle=show/show/hide]
+\end{frame}
+
+\input{sections/sorting-problem}
+\input{sections/bubble-sort}
+\input{sections/bubble-sort-analysis}
+
+\end{document}
