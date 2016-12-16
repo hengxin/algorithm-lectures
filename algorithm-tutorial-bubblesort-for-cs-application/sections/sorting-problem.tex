@@ -1,1 +1,98 @@
 \section{Sorting}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sorting}
+  The sorting problem:
+  \begin{center}
+	Given a sequence $A$ of \only<3->{\textcolor{blue}{sortable elements}}\only<1-2>{integers},\\
+	arrange them in ascending/descending \textcolor<3->{blue}{order}.
+  \end{center}
+
+  \pause
+
+  \[
+	3\ 1\ 4\ 2 \Longrightarrow 1\ 2\ 3\ 4
+  \]
+
+  \pause
+  \vspace{0.20cm}
+
+  A little more formalism: ordering relation ``$<$'' on $A$.
+
+  \vspace{0.20cm}
+  $\forall a, b, c \in A$,
+  \begin{description}[Transitivity:]
+	\item[Trichotomy:] $a < b, a = b, a > b$
+	\item[Transitivity:] $a < b \land b < c \implies a < c$
+  \end{description}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sorting Algorithms}
+  Five important features of (sorting) algorithms:
+  \begin{description}[Effectiveness:]
+	\item[Input:] an integer array $A$
+	\item[Ouput:] $A'$ sorted
+	\item[Definiteness:] precisely defined
+	  \pause
+	\item[\textcolor{red}{Finiteness:}] termination
+	  \pause
+	\item[\textcolor{red}{Effectiveness:}] operations are sufficiently basic
+
+	  \textcolor{red}{CAS}: compare and swap if out-of-order
+  \end{description}
+
+  \pause
+  \vspace{0.30cm}
+
+  \begin{center}
+	\textcolor{brown}{Roughly, what is computation?}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inversions}
+  \[
+	A = a_1, a_2, \ldots, a_n.
+  \]
+  
+
+  \begin{center}
+	If $i < j$ and $a_{i} > a_{j}$, then $(a_i, a_j)$ is an \textcolor{red}{\bf inversion}.
+  \end{center}
+
+  \pause
+
+  \[
+	A = 3, 1, 4, 2.
+  \]
+
+  \begin{center}
+	Inversions: $\textcolor<4->{brown}{(3,1)}, (3,2), \textcolor<4->{brown}{(4,2)}$
+  \end{center}
+
+  \pause
+  \vspace{0.20cm}
+
+  \begin{center}
+	\textcolor{brown}{\bf Adjacent} inversion: $j = i + 1$
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Inversions}
+  \begin{center}
+	$A$ is sorted $\iff$ $A$ has \emph{no} adjacent inversions.
+  \end{center}
+
+  \pause
+
+  \begin{proof}
+	\begin{description}
+	  \item[$\Longrightarrow:$] No inversions at all.
+		\pause
+	  \item[$\Longleftarrow:$] $\forall i \in [1,n-1]: a_{i} \le a_{i+1}$.
+	\end{description}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%

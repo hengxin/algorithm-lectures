@@ -3,6 +3,7 @@
 \usepackage{xifthen}
 \usepackage{verbatim}
 \usepackage{listings}
+\usepackage{xstring}
 
 \usetheme{CambridgeUS} % try Madrid, CambridgeUS
 \usecolortheme{beaver} % try beaver, dolphin, seahorse
@@ -16,6 +17,14 @@
 
 \usepackage{graphicx, subcaption}
 \usepackage[export]{adjustbox}
+
+% input: sequence of numbers, separated by commas
+% output: sequence of numbers, separated by \quad
+% See http://tex.stackexchange.com/a/60026/23098
+\newcommand{\seq}[1]{%
+    \noexpandarg    
+    \StrSubstitute{#1}{,}{\quad}[\ele]
+    \ele}
 
 % needed: \usepackage[export]{adjustbox}
 \newcommand{\importikznocaption}[3]{% #1: width, #2: height, #3: tex

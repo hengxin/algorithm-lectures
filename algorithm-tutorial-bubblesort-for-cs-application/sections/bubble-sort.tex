@@ -1,2 +1,60 @@
 \section{Bubble Sort}
 
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Bubble Sort}
+  Basic idea: to eliminate all adjacent inversions
+  \begin{lstlisting}[style = code]
+  repeat
+    compare adjacent elements and swap if out-of-order
+  until no adjacent inversion
+  \end{lstlisting}
+
+  \pause
+
+  \begin{center}
+	\textcolor{blue}{\bf Definiteness!}
+  \end{center}
+ 
+  \input{sections/bubble-sort-listing}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort}
+  \input{sections/bubble-sort-listing}
+
+  \[
+	5\quad 3\quad 1\quad 6\quad 7\quad 2\quad 4\quad 8
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort}
+  \input{sections/bubble-sort-listing}
+
+  \begin{center}
+	\textcolor{blue}{\bf Finiteness!}
+  \end{center}
+
+  \begin{proof}
+	The inner ``\textcolor{blue}{for}'' loop:
+	\begin{enumerate}[I.]
+	  \item not swapped $\implies$ terminates
+	  \item counting \textcolor{red}{\#inversions}
+		\begin{itemize}
+		  \item $\text{\texttt{swap}}(a_{i-1}, a_{i}) \implies -1 \text{ inversion;} +0 \text{ inversion}$
+		  \item total \#inversions is finite
+		\end{itemize}
+	\end{enumerate}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Optimizing Bubble Sort}
+  \input{sections/bubble-sort-listing-optimization1}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Optimizing Bubble Sort}
+  \input{sections/bubble-sort-listing-optimization2}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%

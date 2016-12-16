@@ -1,1 +1,52 @@
 \section{Analysis}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Time Complexity of Bubble Sort}
+  Finiteness
+
+  \pause
+
+  \begin{description}
+	\item[$|P|:$] \#Passes \hfill (the ``\textcolor{blue}{for}'' loops)
+	\item[$|C|:$] \#Comparisons \hfill (\textcolor{blue}{\texttt{if}} $a_{i-1} > a_{i}$)
+	\item[$|S|:$] \#Swaps  \hfill ($\texttt{swap}(a_{i-1}, a_{i})$)
+  \end{description}
+
+  \pause
+  \vspace{0.30cm}
+
+  Different inputs $\Longleftarrow$ different execution time:
+  \begin{center}
+	Best-case, Worst-case, and Average-case Analysis
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Best-case and Worst-case Analysis}
+  \uncover<2->{
+  \[
+	\text{\textcolor{blue}{Best-case:} } \seq{1,2,3,4,5,6,7,8}
+  \]}
+  
+  \begin{displaymath}
+	\begin{array}{lll}
+	  & \hfill \textcolor{blue}{\frac{\text{Best-case:}}{\uncover<2->{\text{ascendingly sorted}}}} \hfill 
+	  & \hfill \textcolor{red}{\frac{\text{Worst-case:}}{\uncover<4->{\text{descendingly sorted}}}} \\[10pt]
+	  |P| & = (\uncover<3->{\min: 1,} & \uncover<5->{\max: n}); \\[6pt]
+	  |C| & = (\uncover<3->{\min: n-1,} & \uncover<5->{\max: \frac{n^2 - n}{2}}); \\[6pt]
+	  |S| & = (\uncover<3->{\min: 0,} & \uncover<5->{\max: \frac{n^2 - n}{2}}).
+	\end{array}
+  \end{displaymath}
+
+  \uncover<4->{
+  \[
+	\text{\textcolor{red}{Worst-case: }} \seq{8,7,6,5,4,3,2,1}
+  \]}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$|S|:$ \#Swaps}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%

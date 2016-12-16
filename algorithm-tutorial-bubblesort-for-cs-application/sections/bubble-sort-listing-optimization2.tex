@@ -1,0 +1,13 @@
+\begin{lstlisting}[style = code]
+$n \gets$ len($A$)
+repeat
+  swapped $\gets$ false
+  lsp $\gets$ 0
+  for i = 1 to n-1
+    if $a_{i-1} > a_{i}$
+      swap($a_{i-1}$, $a_{i}$)
+      swapped $\gets$ true
+      lsp $\gets$ i
+  $n \gets $ lsp
+until not swapped
+\end{lstlisting}
