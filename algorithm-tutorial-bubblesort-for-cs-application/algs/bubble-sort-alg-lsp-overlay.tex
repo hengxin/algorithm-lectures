@@ -1,22 +1,22 @@
-% lsp: last swap position
+% lsp: the last swap position
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
 	\Procedure{BubbleSort}{$A: a_1\; a_2\; \cdots\; a_n$}
 	  % \State $n \gets \text{len}(A)$
 	  \Repeat
-		\State swapped $\gets$ false
+	  \only<1-2>{\State \textcolor<2>{red}{swapped $\gets$ false}}
 		\State lsp $\gets$ 0	\Comment{lsp: the last swap position}
 		\For{$i \gets 1 : n - 1$}	% \Comment{Pick $i$}
 		  \If{$a_{i} > a_{i+1}$}	% \Comment{CAS}
 			\State \Call{Swap}{$a_{i}, a_{i+1}$}
-			\State swapped $\gets$ true
+			\only<1-2>{\State \textcolor<2>{red}{swapped $\gets$ true}}
 			\State lsp $\gets$ i	\Comment{Update lsp}
 		  \EndIf
 		\EndFor
 		% \State $n \gets n - 1$	
 		\State $n \gets $ lsp	\Comment{Elements after lsp are sorted}
-		\Until{swapped = false}
+		\Until{\only<1-2>{\textcolor<2>{red}{swapped = false}}\uncover<3>{$n = 0$}}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

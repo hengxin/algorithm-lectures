@@ -1,17 +1,17 @@
-% bubble sort
+% bubble sort alg
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
 	\Procedure{BubbleSort}{$A: a_1\; a_2\; \cdots\; a_n$}
 	  \Repeat
-		\State swapped $\gets$ false
+		\State \fbox{\uncover<2->{swapped $\gets$ false}}
 		\For{$i \gets 1 : n - 1$}	\Comment{Pick $i$}
 		  \If{$a_{i} > a_{i+1}$}	% \Comment{CAS}
 			\State \Call{Swap}{$a_{i}, a_{i+1}$}
-			\State swapped $\gets$ true
+			\State \fbox{\uncover<3->{swapped $\gets$ true}}
 		  \EndIf
 		\EndFor
-		\Until{swapped = false}		\Comment{No swaps}
+		\Until{\fbox{\uncover<4->{swapped = false}}}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

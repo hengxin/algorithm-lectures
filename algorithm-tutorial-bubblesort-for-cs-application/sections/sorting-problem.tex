@@ -3,10 +3,10 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sorting}
   The sorting problem:
-  \begin{center}
-	Given a sequence $A$ of \only<3->{\textcolor{blue}{sortable elements}}\only<1-2>{integers},\\
-	arrange them in ascending/descending \textcolor<3->{blue}{order}.
-  \end{center}
+  \begin{description}
+	\item[Input:] A sequence $A$ of $n$ integers \seq{$a_1, a_2, \cdots, a_n$}.
+	\item[Output:] A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
+  \end{description}
 
   \pause
 
@@ -14,39 +14,39 @@
 	3\ 1\ 4\ 2 \Longrightarrow 1\ 2\ 3\ 4
   \]
 
-  \pause
-  \vspace{0.20cm}
+  % \pause
+  % \vspace{0.20cm}
 
-  A little more formalism: ordering relation ``$<$'' on $A$.
+  % sortable
+  % A little more formalism: ordering relation ``$<$'' on $A$.
 
-  \vspace{0.20cm}
-  $\forall a, b, c \in A$,
-  \begin{description}[Transitivity:]
-	\item[Trichotomy:] $a < b, a = b, a > b$
-	\item[Transitivity:] $a < b \land b < c \implies a < c$
-  \end{description}
+  % \vspace{0.20cm}
+  % $\forall a, b, c \in A$,
+  % \begin{description}[Transitivity:]
+  %   \item[Trichotomy:] $a < b, a = b, a > b$
+  %   \item[Transitivity:] $a < b \land b < c \implies a < c$
+  % \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Sorting Algorithms}
-  Five important features of (sorting) algorithms:
-  \begin{description}[Effectiveness:]
-	\item[Input:] an integer array $A$
-	\item[Ouput:] $A'$ sorted
-	\item[Definiteness:] precisely defined
-	  \pause
-	\item[\textcolor{red}{Finiteness:}] termination
-	  \pause
-	\item[\textcolor{red}{Effectiveness:}] operations are sufficiently basic
-
-	  \textcolor{red}{CAS}: compare and swap if out-of-order
-  \end{description}
+  \begin{center}
+	An algorithm is a sequence of computational steps \\
+	that transform the input into the output.
+  \end{center}
 
   \pause
-  \vspace{0.30cm}
 
-  \begin{center}
-	\textcolor{brown}{Roughly, what is computation?}
-  \end{center}
+  \begin{description}[<+->][Effectiveness:]
+	\item[Definiteness:] precisely defined steps
+	\item[Finiteness:] termination
+	\item[Effectiveness:] operations are sufficiently basic
+	  \begin{itemize}
+		\item RAM {\scriptsize (Random-Access Machine)} model
+		\item unrealistic: \texttt{sort} instruction
+		\item realistic: arithmetic, data movement, and control
+		\item \textcolor{blue}{CAS for sort:} compare and swap if out-of-order
+	  \end{itemize}
+  \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
@@ -81,18 +81,24 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
-  \begin{center}
-	$A$ is sorted $\iff$ $A$ has \emph{no} adjacent inversions.
-  \end{center}
+  \begin{align*}
+	A \text{ is sorted } &\Longrightarrow A \text{ has no inversions} \\
+						 &\Longrightarrow A \text{ has no adjacent inversions}.
+  \end{align*}
 
   \pause
+  \vspace{-0.50cm}
 
-  \begin{proof}
-	\begin{description}
-	  \item[$\Longrightarrow:$] No inversions at all.
-		\pause
-	  \item[$\Longleftarrow:$] $\forall i \in [1,n-1]: a_{i} \le a_{i+1}$.
-	\end{description}
-  \end{proof}
+  \begin{align*}
+	A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\
+                        &\Longrightarrow A \text{ is sorted}.
+  \end{align*}
+
+  \pause
+  \vspace{0.30cm}
+
+  \begin{center}
+	\fbox{$A$ is sorted $\iff$ $A$ has no adjacent inversions.}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

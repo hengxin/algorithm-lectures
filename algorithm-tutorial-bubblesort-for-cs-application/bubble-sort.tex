@@ -1,9 +1,15 @@
 \documentclass[shownotes, xcolor = table]{beamer}
 
 \usepackage{xifthen}
+\usepackage{xstring}
+
 \usepackage{verbatim}
 \usepackage{listings}
-\usepackage{xstring}
+
+\usepackage{algorithm}
+% \usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill$\triangleright$ \textcolor{teal}{#1}}
 
 \usetheme{CambridgeUS} % try Madrid, CambridgeUS
 \usecolortheme{beaver} % try beaver, dolphin, seahorse
@@ -21,9 +27,10 @@
 % input: sequence of numbers, separated by commas
 % output: sequence of numbers, separated by \quad
 % See http://tex.stackexchange.com/a/60026/23098
+% \usepackage{xstring}
 \newcommand{\seq}[1]{%
     \noexpandarg    
-    \StrSubstitute{#1}{,}{\quad}[\ele]
+    \StrSubstitute{#1}{,}{\;}[\ele]
     \ele}
 
 % needed: \usepackage[export]{adjustbox}
@@ -35,6 +42,8 @@
     \end{adjustbox}
   \end{figure}
 }
+
+\usepackage{wasysym}
 
 \usepackage[normalem]{ulem} % strike through text
 \newcommand{\soutthick}[1]{%
@@ -57,7 +66,7 @@
 
 \lstdefinestyle{code}{
   language = Java,
-  basicstyle = \ttfamily\footnotesize,
+  basicstyle = \rmfamily\footnotesize,
   captionpos = t,
   mathescape = true,
   showstringspaces = false,
@@ -66,7 +75,7 @@
   stringstyle = \color{green}\bfseries,
   numbers = left,
   numberstyle = \tiny,
-  upquote = true, 
+  % upquote = true, 
   frame = lines,
   breaklines = true
 }

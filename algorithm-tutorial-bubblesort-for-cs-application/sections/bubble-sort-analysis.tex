@@ -2,23 +2,27 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Time Complexity of Bubble Sort}
-  Finiteness
-
-  \pause
-
-  \begin{description}
-	\item[$|P|:$] \#Passes \hfill (the ``\textcolor{blue}{for}'' loops)
-	\item[$|C|:$] \#Comparisons \hfill (\textcolor{blue}{\texttt{if}} $a_{i-1} > a_{i}$)
-	\item[$|S|:$] \#Swaps  \hfill ($\texttt{swap}(a_{i-1}, a_{i})$)
-  \end{description}
-
-  \pause
-  \vspace{0.30cm}
-
-  Different inputs $\Longleftarrow$ different execution time:
-  \begin{center}
-	Best-case, Worst-case, and Average-case Analysis
-  \end{center}
+  \begin{itemize}
+	\setlength{\itemsep}{10pt}
+	\item Finiteness is NOT enough $\implies$ Quantitative finiteness
+	  \pause
+	\item Time on real computers varies $\implies$ \#Ops on RAM model:
+	  \vspace{5pt}
+	  \pause
+	  \begin{description}
+		\setlength{\itemsep}{5pt}
+		\item[$|P|:$] \#Passes \hfill (the ``{\bf for}'' loops)
+		\item[$|C|:$] \#Comparisons \hfill ({\bf if} $a_{i-1} > a_{i}$)
+		\item[$|S|:$] \#Swaps  \hfill ($\textsc{Swap}(a_{i-1}, a_{i})$)
+	  \end{description}
+	  \pause
+	\item Different inputs $\implies$ different execution time:
+	  \vspace{5pt}
+	  \pause
+	  \begin{itemize}
+		\item Best-case, worst-case, and average-case analysis
+	  \end{itemize}
+\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Best-case and Worst-case Analysis}
@@ -43,7 +47,34 @@
   \]}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$|S|:$ \#Swaps}
+\begin{frame}{$|S|:$ \#Swaps (Average Analysis)}
+  Assumptions on inputs:
+  \begin{enumerate}
+	\item The input is a random permutation
+	\item All numbers are distinct
+  \end{enumerate}
+
+  \pause
+
+  \begin{center}
+	\fbox{$\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
+  \end{center}
+
+  \pause 
+
+  \begin{center}
+	\textcolor{red}{\bf Question:} What is the expected \#\text{inversions}?
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{$|S|:$ \#Swaps (Average Analysis)}
+  \begin{align*}
+	\onslide<1->{I_{ij} &: \text{indicator of inversion } (a_i, a_j) \\[3pt]}
+	\onslide<2->{X &= \sum_{j} \sum_{i<j} I_{ij} \\[3pt]}
+	\onslide<3->{E(X) &= E(\sum_{j} \sum_{i<j} I_{ij}) = \sum_{j} \sum_{i<j} E(I_{ij}) \\[3pt]}
+	\onslide<4->{E(I_{ij}) &= P\set{I_{ij}} = \frac{1}{2} \\[3pt]}
+	\onslide<5->{E(X) &= \sum_{j} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}}
+  \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%

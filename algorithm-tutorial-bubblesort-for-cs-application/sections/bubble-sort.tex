@@ -1,57 +1,100 @@
 \section{Bubble Sort}
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]{Bubble Sort}
+\begin{frame}{Bubble Sort}
   Basic idea: to eliminate all adjacent inversions
-  \begin{lstlisting}[style = code]
-  repeat
-    compare adjacent elements and swap if out-of-order
-  until no adjacent inversion
-  \end{lstlisting}
+
+  \input{algs/bubble-sort-basic-idea}
 
   \pause
 
   \begin{center}
-	\textcolor{blue}{\bf Definiteness!}
+	\textcolor{red}{\bf Definiteness!}\\[0.30cm]
+	\pause
+	\textcolor{red}{\bf Finiteness!}
   \end{center}
- 
-  \input{sections/bubble-sort-listing}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort}
-  \input{sections/bubble-sort-listing}
+  \input{algs/bubble-sort-alg-overlay}
 
-  \[
-	5\quad 3\quad 1\quad 6\quad 7\quad 2\quad 4\quad 8
-  \]
+  \uncover<5->{
+	\begin{center}
+	  \textcolor{blue}{\bf Definiteness!}
+	\end{center}
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort}
-  \input{sections/bubble-sort-listing}
+  \begin{center}
+	\scalebox{0.75}{
+	  \begin{minipage}{0.70\linewidth}
+		\input{algs/bubble-sort-alg}
+	  \end{minipage}
+	}
+  \end{center}
+
+  % \[
+  %   5\quad 3\quad 1\quad 6\quad 7\quad 2\quad 4\quad 8
+  % \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort}
+  \begin{center}
+	\scalebox{0.75}{
+	  \begin{minipage}{0.70\linewidth}
+		\input{algs/bubble-sort-alg}
+	  \end{minipage}
+	}
+  \end{center}
 
   \begin{center}
 	\textcolor{blue}{\bf Finiteness!}
   \end{center}
 
-  \begin{proof}
-	The inner ``\textcolor{blue}{for}'' loop:
-	\begin{enumerate}[I.]
-	  \item not swapped $\implies$ terminates
-	  \item counting \textcolor{red}{\#inversions}
-		\begin{itemize}
-		  \item $\text{\texttt{swap}}(a_{i-1}, a_{i}) \implies -1 \text{ inversion;} +0 \text{ inversion}$
-		  \item total \#inversions is finite
-		\end{itemize}
-	\end{enumerate}
-  \end{proof}
+  \pause
+
+  The inner ``{\bf for}'' loops:
+  \begin{enumerate}[1)]
+	\item \textcolor{blue}{$\exists$ loop : no swaps} $\implies$ swapped = false $\implies$ terminates
+	  \pause
+	\item \textcolor{red}{$\forall$ loop : has swaps} \pause \qquad \textcolor{red}{\bf \textsc{Impossible}!}
+  \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort}
+  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on adjacent inversions:
+  \fignocaption{width = 0.50\textwidth}{figs/swap-adjacent-inversions.pdf}
+
+  \pause
+  \begin{center}
+	\textcolor{blue}{$-1: (7,2)$} \pause \qquad\qquad \textcolor{red}{$+2: (6,2), (7,4)$}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort}
+  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on \textcolor{red}{\#inversions}:
+  \fignocaption{width = 0.50\textwidth}{figs/swap-inversions.pdf}
+
+  \pause
+  \begin{center}
+	\textcolor{blue}{$-1: (a_{i},a_{i+1})$} \pause \qquad\qquad \textcolor{red}{$+0$}
+  \end{center}
+
+  \pause
+  \vspace{0.20cm}
+
+  \begin{center}
+	Total \#inversions is finite.
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Optimizing Bubble Sort}
-  \input{sections/bubble-sort-listing-optimization1}
+  \input{algs/bubble-sort-alg-mfp}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Optimizing Bubble Sort}
-  \input{sections/bubble-sort-listing-optimization2}
+  \input{algs/bubble-sort-alg-lsp-overlay}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
