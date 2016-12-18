@@ -28,10 +28,15 @@
   % \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sorting Algorithms}
+\begin{frame}{Algorithms}
   \begin{center}
-	An algorithm is a sequence of computational steps \\
+	An algorithm is a sequence of operations \\
 	that transform the input into the output.
+  \end{center}
+
+  \pause
+  \begin{center}
+	\textcolor{red}{\bf Correctness!}
   \end{center}
 
   \pause
@@ -39,24 +44,20 @@
   \begin{description}[<+->][Effectiveness:]
 	\item[Definiteness:] precisely defined steps
 	\item[Finiteness:] termination
-	\item[Effectiveness:] operations are sufficiently basic
+	\item[Effectiveness:] RAM {\scriptsize (Random-Access Machine)} model
 	  \begin{itemize}
-		\item RAM {\scriptsize (Random-Access Machine)} model
 		\item unrealistic: \texttt{sort} instruction
 		\item realistic: arithmetic, data movement, and control
-		\item \textcolor{blue}{CAS for sort:} compare and swap if out-of-order
+		\item \textcolor{blue}{CAS\footnotemark~for sort:} compare and swap if out-of-order
 	  \end{itemize}
   \end{description}
+  \footnotetext<8->{Forget about that CAS in computer architecture.}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
   \[
 	A = a_1, a_2, \ldots, a_n.
   \]
-  
 
   \begin{center}
 	If $i < j$ and $a_{i} > a_{j}$, then $(a_i, a_j)$ is an \textcolor{red}{\bf inversion}.
@@ -83,22 +84,20 @@
 \begin{frame}{Inversions}
   \begin{align*}
 	A \text{ is sorted } &\Longrightarrow A \text{ has no inversions} \\
-						 &\Longrightarrow A \text{ has no adjacent inversions}.
+	  \onslide<2->{&\Longrightarrow A \text{ has no adjacent inversions}.}
   \end{align*}
 
-  \pause
   \vspace{-0.50cm}
 
   \begin{align*}
-	A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\
-                        &\Longrightarrow A \text{ is sorted}.
+	\onslide<3->{A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\}
+	  \onslide<4->{&\Longrightarrow A \text{ is sorted}.}
   \end{align*}
 
-  \pause
   \vspace{0.30cm}
 
   \begin{center}
-	\fbox{$A$ is sorted $\iff$ $A$ has no adjacent inversions.}
+	\onslide<5->{\fbox{$A$ is sorted $\iff$ $A$ has no adjacent inversions.}}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

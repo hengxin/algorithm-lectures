@@ -2,10 +2,11 @@
 	swap/.style = {dashed, thick},
 	inv/.style = {blue, rectangle, draw, inner sep = 0pt, outer sep = 0pt},
 	ele/.style = {font = \Large},
-	pass/.style = {brown, thick, dashed}]
+	pass/.style = {brown, thick, dashed},
+	bubble/.style = {violet, bend right = #1, decorate, decoration = {shape backgrounds, shape = circle, shape size = 5pt, shape sep = 12pt}}]
 	\uncover<1->{
   \foreach \e [count = \ei] in {3,1,4,2} {
-	  \node (1\e) [ele] at (\ei, 1) {$\e$};
+	  \node (0\e) [ele] at (\ei, 1) {$\e$};
   }
   \draw [pass] (0.5, 0.5) to (4.5,0.5);
 }
@@ -93,5 +94,13 @@
   \begin{pgfonlayer}{background}
     \node<10-> () [inv, fit = (93) (94)] {};
   \end{pgfonlayer}
+}
+
+\uncover<11->{
+  \draw [bubble = 15] (03) to (44);
+}
+
+\uncover<12->{
+  \draw [bubble = 15] (33) to (73);
 }
 \end{tikzpicture}
