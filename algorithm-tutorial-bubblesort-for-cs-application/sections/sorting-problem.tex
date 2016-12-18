@@ -46,13 +46,12 @@
 	\item[Effectiveness:] a reasonable model; basic operations % RAM {\scriptsize (Random-Access Machine)} model
 	  \pause
 	  \begin{itemize}
-		\item unrealistic: \texttt{sort} operation
-		\item realistic: arithmetic, data movement, and control
-		  \pause
-		\item \textcolor{blue}{CAS\footnotemark~for sort:} compare and swap \textcolor{brown}{if out-of-order}
+		% \item unrealistic: \texttt{sort} operation
+		% \item realistic: arithmetic, data movement, and control
+		%   \pause
+		\item for sorting: compare, swap
 	  \end{itemize}
   \end{description}
-  \footnotetext<7->{Forget about that CAS in computer architecture.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
