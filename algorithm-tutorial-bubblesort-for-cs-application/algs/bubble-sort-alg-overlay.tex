@@ -4,14 +4,14 @@
   \begin{algorithmic}[1]
 	\Procedure{BubbleSort}{$A: a_1\; a_2\; \cdots\; a_n$}
 	  \Repeat
-		\State \fbox{\uncover<2->{swapped $\gets$ false}}
-		\For{$i \gets 1 : n - 1$}	\Comment{Pick $i$}
+	  \State \fbox{\uncover<3->{\textcolor{red}{swapped} }\uncover<4->{$\gets$ false}}
+		\For{\fbox{\uncover<2->{$i \gets 1 : n - 1$}}}	\Comment{Pick $i$}
 		  \If{$a_{i} > a_{i+1}$}	% \Comment{CAS}
 			\State \Call{Swap}{$a_{i}, a_{i+1}$}
-			\State \fbox{\uncover<3->{swapped $\gets$ true}}
+			\State \fbox{\uncover<5->{swapped $\gets$ true}}
 		  \EndIf
 		\EndFor
-		\Until{\fbox{\uncover<4->{swapped = false}}}
+		\Until{\fbox{\only<1-5>{no adjacent inversions}\only<6->{swapped = false}}}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

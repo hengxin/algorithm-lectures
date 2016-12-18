@@ -4,18 +4,14 @@
 \begin{frame}{Sorting}
   The sorting problem:
   \begin{description}
-	\item[Input:] A sequence $A$ of $n$ integers \seq{$a_1, a_2, \cdots, a_n$}.
-	\item[Output:] A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
+	\item[Input:] A sequence of $n$ integers $A$:\seq{$a_1, a_2, \cdots, a_n$}.
+	\item[Output:] $A$ sorted {\small (non-decreasing order)}.
+		% A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
   \end{description}
 
-  \pause
-
   \[
-	3\ 1\ 4\ 2 \Longrightarrow 1\ 2\ 3\ 4
+	3\quad 1\quad 4\quad 2\quad \Longrightarrow 1\quad 2\quad 3\quad 4
   \]
-
-  % \pause
-  % \vspace{0.20cm}
 
   % sortable
   % A little more formalism: ordering relation ``$<$'' on $A$.
@@ -29,10 +25,11 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Algorithms}
-  \begin{center}
-	An algorithm is a sequence of operations \\
-	that transform the input into the output.
-  \end{center}
+  % \begin{center}
+  %   An algorithm is a sequence of operations \\
+  %   that transform the input into the output.
+  % \end{center}
+  \fignocaption{width = 0.50\textwidth}{figs/algorithm-def.pdf}
 
   \pause
   \begin{center}
@@ -41,43 +38,39 @@
 
   \pause
 
-  \begin{description}[<+->][Effectiveness:]
-	\item[Definiteness:] precisely defined steps
+  \begin{description}[Effectiveness:]
+	\item[Definiteness:] precisely defined operations
+	  \pause
 	\item[Finiteness:] termination
-	\item[Effectiveness:] RAM {\scriptsize (Random-Access Machine)} model
+	  \pause
+	\item[Effectiveness:] a reasonable model; basic operations % RAM {\scriptsize (Random-Access Machine)} model
+	  \pause
 	  \begin{itemize}
-		\item unrealistic: \texttt{sort} instruction
+		\item unrealistic: \texttt{sort} operation
 		\item realistic: arithmetic, data movement, and control
-		\item \textcolor{blue}{CAS\footnotemark~for sort:} compare and swap if out-of-order
+		  \pause
+		\item \textcolor{blue}{CAS\footnotemark~for sort:} compare and swap \textcolor{brown}{if out-of-order}
 	  \end{itemize}
   \end{description}
-  \footnotetext<8->{Forget about that CAS in computer architecture.}
+  \footnotetext<7->{Forget about that CAS in computer architecture.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
   \[
-	A = a_1, a_2, \ldots, a_n.
+	A = a_1\quad a_2\quad \ldots\quad a_n.
   \]
 
   \begin{center}
 	If $i < j$ and $a_{i} > a_{j}$, then $(a_i, a_j)$ is an \textcolor{red}{\bf inversion}.
   \end{center}
 
-  \pause
-
-  \[
-	A = 3, 1, 4, 2.
-  \]
-
-  \begin{center}
-	Inversions: $\textcolor<4->{brown}{(3,1)}, (3,2), \textcolor<4->{brown}{(4,2)}$
-  \end{center}
+  \fignocaption{width = 0.35\textwidth}{figs/inversions-example.pdf}
 
   \pause
   \vspace{0.20cm}
 
   \begin{center}
-	\textcolor{brown}{\bf Adjacent} inversion: $j = i + 1$
+	\textcolor{blue}{\bf Adjacent} inversion: $j = i + 1$
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

@@ -2,16 +2,16 @@
 
 \begin{algorithm}[H]
   \begin{algorithmic}[1]
-	\Procedure{BubbleSortOverview}{$A: a_1\; a_2\; \cdots\; a_n$}
+	\Procedure{BubbleSort}{$A: a_1\; a_2\; \cdots\; a_n$}
 	  \Repeat
-		\State Pick any $i$		
-		\uncover<2->{\Comment{\textcolor{red}{\bf Definiteness!}}}
+		\State pick any $i$		
+		\uncover<3->{\Comment{\textcolor{red}{\bf Definiteness!}}}
 		  \If{$a_{i} > a_{i+1}$}	\Comment{CAS}
 			\State \Call{Swap}{$a_{i}, a_{i+1}$}
 		  \EndIf
-		  \Until{no adjacent inversions}	
-		  \uncover<2->{\Comment{\uncover<3->{\textcolor{red}{\bf Finiteness!}}
-		  	\textcolor{red}{\bf Definiteness!}}}
+	  \Until{no adjacent inversions}	
+	  \uncover<3->{\Comment{\uncover<4->{\textcolor{red}{\bf Finiteness!}}
+		\textcolor{red}{\bf Definiteness!}}}
     \EndProcedure
   \end{algorithmic}
 \end{algorithm}

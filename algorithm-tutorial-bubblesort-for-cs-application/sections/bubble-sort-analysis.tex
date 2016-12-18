@@ -6,22 +6,22 @@
 	\setlength{\itemsep}{10pt}
 	\item Finiteness is NOT enough $\implies$ Quantitative finiteness
 	  \pause
-	\item Time on real computers varies $\implies$ \#Ops on RAM model:
+	\item Time on real computers varies $\implies$ \#Ops on our model:
 	  \vspace{5pt}
 	  \pause
 	  \begin{description}
 		\setlength{\itemsep}{5pt}
-		\item[$|P|:$] \#Passes \hfill (the ``{\bf for}'' loops)
-		\item[$|C|:$] \#Comparisons \hfill ({\bf if} $a_{i-1} > a_{i}$)
-		\item[$|S|:$] \#Swaps  \hfill ($\textsc{Swap}(a_{i-1}, a_{i})$)
+		% \item[$|P|:$] \#Passes \hfill (the ``{\bf for}'' loops)
+		\item[$|C|:$] \#Comparisons \hfill ({\bf if} $a_{i} > a_{i+1}$)
+		\item[$|S|:$] \#Swaps  \hfill ($\textsc{Swap}(a_{i}, a_{i+1})$)
 	  \end{description}
+	  % \pause
+	  % \[
+	  %   |C| \ge |S|
+	  % \]
+	  % \vspace{-0.50cm}
 	  \pause
-	  \[
-		|C| \ge |S|
-	  \]
-	  \vspace{-0.50cm}
-	  \pause
-	\item Different inputs $\implies$ different execution time:
+	\item Different inputs $\implies$ $|C|$ and $|S|$ vary:
 	  \vspace{5pt}
 	  \pause
 	  \begin{itemize}
@@ -40,23 +40,28 @@
 	\begin{array}{lll}
 	  & \hfill \textcolor{blue}{\frac{\text{Best-case:}}{\uncover<2->{\text{ascendingly sorted}}}} \hfill 
 	  & \hfill \textcolor{red}{\frac{\text{Worst-case:}}{\uncover<4->{\text{descendingly sorted}}}} \\[10pt]
-	  |P| & = (\uncover<3->{\min: 1,} & \uncover<5->{\max: n}); \\[6pt]
+	  % |P| & = (\uncover<3->{\min: 1,} & \uncover<5->{\max: n}); \\[6pt]
 	  |C| & = (\uncover<3->{\min: n-1,} & \uncover<5->{\max: \frac{n^2 - n}{2}}); \\[6pt]
 	  |S| & = (\uncover<3->{\min: 0,} & \uncover<5->{\max: \frac{n^2 - n}{2}}).
 	\end{array}
   \end{displaymath}
 
   \uncover<4->{
-  \[
-	\text{\textcolor{red}{Worst-case: }} \seq{8,7,6,5,4,3,2,1}
-  \]}
+	\[
+	  \text{\textcolor{red}{Worst-case: }} \seq{8,7,6,5,4,3,2,1}
+	\]}
+  \uncover<5->{
+	\[
+	  \#\text{inversions} = (n-1) + (n-2) + \cdots + 1 = \frac{n^2 - n}{2}.
+	\]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$|S|:$ \#Swaps (Average Analysis)}
   Assumptions on inputs:
   \begin{enumerate}
-	\item The input is a random permutation
 	\item All numbers are distinct
+	\item The input is a random permutation
   \end{enumerate}
 
   \pause
@@ -65,24 +70,27 @@
 	\fbox{$\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
   \end{center}
 
-  \pause 
-
-  \begin{center}
-	\textcolor{red}{\bf Question:} What is the expected \#\text{inversions}?
-  \end{center}
+  \pause
+  \[
+	|S| = \textcolor{red}{\mathbb{E}(\#\text{inversions})}
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$|S|:$ \#Swaps (Average Analysis)}
   \begin{align*}
-	\onslide<1->{I_{ij} &: \text{indicator of inversion } (a_i, a_j) \\[3pt]}
-	\onslide<2->{X &= \sum_{j} \sum_{i<j} I_{ij} \\[3pt]}
-	\onslide<3->{E(X) &= E(\sum_{j} \sum_{i<j} I_{ij}) = \sum_{j} \sum_{i<j} E(I_{ij}) \\[3pt]}
-	\onslide<4->{E(I_{ij}) &= P\set{I_{ij}} = \frac{1}{2} \\[3pt]}
-	\onslide<5->{E(X) &= \sum_{j} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}}
+	% \onslide<1->{I_{ij} &: \text{indicator of inversion } (a_i, a_j) \\[3pt]}
+	\onslide<1->{I_{ij} &= \left\{\begin{array}{lr}
+		1 & (a_i, a_j) \text{ is an inversion}\\
+		0 & \text{ o.w.} 
+	  \end{array}\right.\\[3pt]}
+	\onslide<1->{X &= \sum_{j} \sum_{i<j} I_{ij}\qquad\quad (\text{\#inversions}) \\[3pt]}
+	\onslide<2->{\mathbb{E}(X) &= \mathbb{E}(\sum_{j} \sum_{i<j} I_{ij}) = \sum_{j} \sum_{i<j} \mathbb{E}(I_{ij}) \\[3pt]}
+	\onslide<3->{\mathbb{E}(I_{ij}) &= \mathbb{P}\set{I_{ij} = 1} = \frac{1}{2}\qquad (a_i > a_j \lor a_i < a_j) \\[3pt]}
+	\onslide<4->{\mathbb{E}(X) &= \sum_{j} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}} \onslide<5->{\textcolor{red}{{}={} O(n^2)}}
   \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{More Sorting Algorithms}
+\begin{frame}{Faster Algorithms}
   \begin{quote}
 	It took a good deal of work to analyze the bubble sort;
 	and although [\dots], 
@@ -94,12 +102,12 @@
   \pause
 
   \begin{center}
-	faster: $O(n^2) \to O(n \lg n)$?\\[3pt] \pause
+	faster: $O(n^2) \to O(n \lg n)$?\\[5pt] \pause
 	\dots and faster: $O(n \lg n) \to O(n)$?
   \end{center}
 
   \pause
-  \fignocaption{width = 0.15\textwidth}{figs/stay-tuned.jpg}
+  \fignocaption{width = 0.18\textwidth}{figs/stay-tuned.jpg}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}[noframenumbering]
@@ -112,4 +120,3 @@
   \fignocaption{width = 0.50\textwidth}{figs/thankyou.jpg}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-

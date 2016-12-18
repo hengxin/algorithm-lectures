@@ -3,6 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort}
   Basic idea: to eliminate all adjacent inversions
+  \pause
 
   \input{algs/bubble-sort-basic-idea-overlay}
 \end{frame}
@@ -12,13 +13,13 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Example}
-  \begin{center}
-	\scalebox{0.50}{
-	  \begin{minipage}{0.70\linewidth}
-		\input{algs/bubble-sort-alg}
-	  \end{minipage}
-	}
-  \end{center}
+  % \begin{center}
+  %   \scalebox{0.50}{
+  %     \begin{minipage}{0.70\linewidth}
+  %   	\input{algs/bubble-sort-alg}
+  %     \end{minipage}
+  %   }
+  % \end{center}
 
   \begin{center}
 	\input{tikz/bubble-sort-example-overlay}
@@ -38,8 +39,6 @@
 	}
   \end{center}
 
-  \pause
-
   The inner ``{\bf for}'' loops:
   \begin{enumerate}[1)]
 	\item \textcolor{blue}{$\exists$ loop : no swaps} $\implies$ swapped = false $\implies$ terminates
@@ -49,18 +48,13 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Finiteness}
-  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on adjacent inversions:
-  \fignocaption{width = 0.50\textwidth}{figs/swap-adjacent-inversions.pdf}
+  \begin{center}
+	\fbox{Total \#inversions is finite.}
+  \end{center}
 
   \pause
-  \begin{center}
-	\textcolor{blue}{$-1: (7,2)$} \pause \qquad\qquad \textcolor{red}{$+2: (6,2), (7,4)$}
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bubble Sort: Finiteness}
   Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on \textcolor{red}{\#inversions}:
-  \fignocaption{width = 0.50\textwidth}{figs/swap-inversions.pdf}
+  \fignocaption{width = 0.45\textwidth}{figs/swap-inversions.pdf}
 
   \pause
   \begin{center}
@@ -68,68 +62,23 @@
   \end{center}
 
   \pause
-  \vspace{0.20cm}
-
   \begin{center}
-	Total \#inversions is finite.
+	\fbox{$\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Correctness}
-  \begin{center}
-	\fbox{$A$ is sorted $\iff$ $A$ has no adjacent inversions.}
-  \end{center}
-
   \begin{align*}
-	\onslide<2->{\text{\textcolor{blue}{\bf Finiteness }}}
-	  \onslide<3->{&\implies \exists \text{ loop : no swaps} \\[3pt]}
-	  \onslide<4->{&\implies A \text{ has no adjacent inversions any more} \\[3pt]}
-	  \onslide<5->{&\implies A \text{ is already sorted.}}
+	\onslide<1->{\text{\textcolor{blue}{\bf Finiteness }}}
+	  \onslide<2->{&\implies \exists \text{ loop : no swaps} \\[3pt]}
+	  \onslide<3->{&\implies A \text{ has no adjacent inversions any more} \\[3pt]}
+	  \onslide<4->{&\implies A \text{ is already sorted.}}
   \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bubble Sort: Correctness}
-  \begin{center}
-	\scalebox{0.70}{
-	  \begin{minipage}{0.80\linewidth}
-		\input{algs/bubble-sort-alg-correctness}
-	  \end{minipage}
-	}
-  \end{center}
-
-  \pause
-
-  \begin{center}
-	\textcolor{blue}{\bf Loop invariant:\\[3pt]} 
-	Before the $k$-th {\small ($k \ge 1$)} ``{\bf for}'' loop, $a_{n-(k-1)} \cdots a_{n}$ \\
-	(1) consists of the largest $(k-1)$ elements \\
-	(2) in sorted order. 
-  \end{center}
-
-  \pause
-
-  \begin{center}
-	Correctness: Initialization + Maintenance + Termination
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Optimizing Bubble Sort}
+\begin{frame}{Optimizing Bubble Sort (I)\footnote{See Appendix for ``Optimizing Bubble Sort (II)''.}}
+  Idea: After each ``{\bf for}'' loop, one more element is settled.
 
   \input{algs/bubble-sort-alg-mfp}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Optimizing Bubble Sort}
-  \begin{align*}
-	3\quad 1\quad 4\quad 2\quad 5\quad 6\quad 7\\[3pt]
-	1\quad 3\quad 2\quad \textcolor{red}{4}\quad \textcolor{red}{5}\quad 6\quad 7
-  \end{align*}
-
-  \begin{center}
-	\scalebox{0.85}{
-	  \begin{minipage}{0.80\linewidth}
-		\input{algs/bubble-sort-alg-lsp-overlay}
-	  \end{minipage}
-	}
-  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

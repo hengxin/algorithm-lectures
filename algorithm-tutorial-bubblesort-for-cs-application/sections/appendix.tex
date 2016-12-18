@@ -1,0 +1,51 @@
+\appendix
+
+\section{Appendix}
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort: Correctness}
+  \begin{center}
+	\scalebox{0.70}{
+	  \begin{minipage}{0.80\linewidth}
+		\input{algs/bubble-sort-alg-correctness}
+	  \end{minipage}
+	}
+  \end{center}
+
+  \begin{center}
+	\textcolor{blue}{\bf Loop invariant:\\[3pt]} 
+	Before the $k$-th {\small ($k \ge 1$)} ``{\bf for}'' loop, $a_{n-(k-1)} \cdots a_{n}$ \\
+	(1) consists of the largest $(k-1)$ elements \\
+	(2) in sorted order. 
+  \end{center}
+
+  \begin{center}
+	Correctness: Initialization + Maintenance + Termination
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bubble Sort: Finiteness}
+  \begin{center}
+	Idea: well-founded relation over $\mathbf{N}$
+  \end{center}
+
+  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on \textcolor{blue}{adjacent inversions}:
+  \fignocaption{width = 0.50\textwidth}{figs/swap-adjacent-inversions.pdf}
+
+  \pause
+  \begin{center}
+	\textcolor{blue}{$-1: (7,2)$} \pause \qquad\qquad \textcolor{red}{$+2: (6,2), (7,4)$}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Optimizing Bubble Sort (II)}
+  % \begin{align*}
+  %   3\quad 1\quad 4\quad 2\quad 5\quad 6\quad 7\\[3pt]
+  %   1\quad 3\quad 2\quad \textcolor{red}{4}\quad \textcolor{red}{5}\quad 6\quad 7
+  % \end{align*}
+
+  Idea: After each ``{\bf for}'' loop, all elements after ``\textcolor{blue}{lsp}'' are settled.
+
+  \input{algs/bubble-sort-alg-lsp-overlay}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
