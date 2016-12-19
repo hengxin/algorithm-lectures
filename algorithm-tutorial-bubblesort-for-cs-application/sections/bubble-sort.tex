@@ -1,7 +1,7 @@
 \section{Bubble Sort}
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bubble Sort}
+\begin{frame}{Bubble Sort: Basic Idea}
   Basic idea: to eliminate all adjacent inversions
   \pause
 
@@ -25,6 +25,9 @@
 	\input{tikz/bubble-sort-example-overlay}
   \end{center}
 
+  \uncover<13->{
+	After each ``{\bf for}'' loop, one more element is bubbled up to its final position.
+  }
   % \[
   %   5\quad 3\quad 1\quad 6\quad 7\quad 2\quad 4\quad 8
   % \]
@@ -49,16 +52,18 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Finiteness}
   \begin{center}
-	\fbox{Total \#inversions is finite.}
+	\fbox{Fact: total \#inversions is finite.}
   \end{center}
 
   \pause
-  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on \textcolor{red}{\#inversions}\footnote{Not on \textcolor{blue}{\#adjacent inversions}!}:
-  \fignocaption{width = 0.45\textwidth}{figs/swap-inversions.pdf}
+  Effects of \textsc{Swap}{($a_{i}, a_{i+1}$)} on \textcolor{red}{\#inversions}\footnote{Not on \textcolor{blue}{\#adjacent inversions}! Think about it.}:
+  \fignocaption{width = 0.50\textwidth}{figs/swap-inversions.pdf}
 
   \pause
   \begin{center}
-	\textcolor{blue}{$-1: (a_{i},a_{i+1})$} \pause \qquad\qquad \textcolor{red}{$+0$}
+	\textcolor{blue}{$-1: (a_{i},a_{i+1})$}\\[3pt] \pause 
+	\textcolor{red}{${}+{}0:$} relative order between any other two elements does not change!\\[3pt] \pause
+	$(a_k, a_l), (a_m, a_n), \textcolor{red}{(a_k, a_i), (a_i, a_m)}$
   \end{center}
 
   \pause
@@ -77,7 +82,7 @@
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Optimizing Bubble Sort (I)\footnote{See Appendix for ``Optimizing Bubble Sort (II)''.}}
-  Idea: After each ``{\bf for}'' loop, one more element is settled.
+  After each ``{\bf for}'' loop, one more element is bubbled up to its final position.
 
   \input{algs/bubble-sort-alg-mfp}
 \end{frame}

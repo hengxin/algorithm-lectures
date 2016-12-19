@@ -1,4 +1,4 @@
-\section{Analysis}
+\section{Analysis of Bubble Sort}
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Time Complexity of Bubble Sort}
@@ -15,11 +15,11 @@
 		\item[$|C|:$] \#Comparisons \hfill ({\bf if} $a_{i} > a_{i+1}$)
 		\item[$|S|:$] \#Swaps  \hfill ($\textsc{Swap}(a_{i}, a_{i+1})$)
 	  \end{description}
-	  % \pause
-	  % \[
-	  %   |C| \ge |S|
-	  % \]
-	  % \vspace{-0.50cm}
+	  \pause
+	  \[
+	    |C| \ge |S|
+	  \]
+	  \vspace{-0.50cm}
 	  \pause
 	\item Different inputs $\implies$ $|C|$ and $|S|$ vary:
 	  \vspace{5pt}
@@ -33,13 +33,13 @@
 \begin{frame}{Best-case and Worst-case Analysis}
   \uncover<2->{
   \[
-	\text{\textcolor{blue}{Best-case:} } \seq{1,2,3,4,5,6,7,8}
+	\text{\textcolor{blue}{Best-case:} } 1\quad 2\; \cdots\; n\quad
   \]}
   
   \begin{displaymath}
 	\begin{array}{lll}
-	  & \hfill \textcolor{blue}{\frac{\text{Best-case:}}{\uncover<2->{\text{ascendingly sorted}}}} \hfill 
-	  & \hfill \textcolor{red}{\frac{\text{Worst-case:}}{\uncover<4->{\text{descendingly sorted}}}} \\[10pt]
+	  & \hfill \textcolor{blue}{\frac{\text{Best-case:}}{\uncover<2->{\text{non-decreasingly sorted}}}} \hfill 
+	  & \hfill \textcolor{red}{\frac{\text{Worst-case:}}{\uncover<4->{\text{non-increasingly sorted}}}} \\[10pt]
 	  % |P| & = (\uncover<3->{\min: 1,} & \uncover<5->{\max: n}); \\[6pt]
 	  |C| & = (\uncover<3->{\min: n-1,} & \uncover<5->{\max: \frac{n^2 - n}{2}}); \\[6pt]
 	  |S| & = (\uncover<3->{\min: 0,} & \uncover<5->{\max: \frac{n^2 - n}{2}}).
@@ -48,7 +48,7 @@
 
   \uncover<4->{
 	\[
-	  \text{\textcolor{red}{Worst-case: }} \seq{8,7,6,5,4,3,2,1}
+	  \text{\textcolor{red}{Worst-case: }} n\quad n-1\; \cdots\; 1
 	\]}
   \uncover<5->{
 	\[
@@ -57,11 +57,12 @@
   }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$|S|:$ \#Swaps (Average Analysis)\footnote{The calculation of $|C|$ in average is much more involved.}}
+\begin{frame}{$|S|:$ \#Swaps (Average-case Analysis)\footnote{An exercise: what is $|C|$ (\#Comparisions) in average?}}
   Assumptions on inputs:
   \begin{enumerate}
-	\item The input is a random permutation
-	\item All numbers are distinct
+	\item The input is a random permutation (``average input'')
+	  \pause
+	\item All numbers are all different (for simplicity)
   \end{enumerate}
 
   \pause
@@ -83,10 +84,10 @@
 		1 & (a_i, a_j) \text{ is an inversion}\\
 		0 & \text{ o.w.} 
 	  \end{array}\right.\\[3pt]}
-	\onslide<1->{X &= \sum_{j} \sum_{i<j} I_{ij}\qquad\quad (\text{\#inversions}) \\[3pt]}
-	\onslide<2->{\mathbb{E}(X) &= \mathbb{E}(\sum_{j} \sum_{i<j} I_{ij}) = \sum_{j} \sum_{i<j} \mathbb{E}(I_{ij}) \\[3pt]}
-	\onslide<3->{\mathbb{E}(I_{ij}) &= \mathbb{P}\set{I_{ij} = 1} = \frac{1}{2}\qquad (a_i > a_j \lor a_i < a_j) \\[3pt]}
-	\onslide<4->{\mathbb{E}(X) &= \sum_{j} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}} \onslide<5->{\textcolor{red}{{}={} O(n^2)}}
+	\onslide<1->{X &= \sum_{1 \le i < n} \sum_{i < j \le n} I_{ij}\qquad\quad (\text{\#inversions}) \\[3pt]}
+	\onslide<2->{\mathbb{E}(X) &= \mathbb{E}(\sum_{i} \sum_{j>i} I_{ij})}\onslide<3->{= \sum_{i} \sum_{j>i} \mathbb{E}(I_{ij})\quad (\text{linearity of expectation})\\[3pt]}
+	\onslide<4->{\mathbb{E}(I_{ij}) &= \mathbb{P}\set{I_{ij} = 1} = \frac{1}{2}\qquad (a_i \neq a_j; \text{half: } a_i < a_j, \text{half: } a_i > a_j) \\[3pt]}
+	\onslide<5->{\mathbb{E}(X) &= \sum_{i} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}} \onslide<6->{\textcolor{red}{{}={} O(n^2)}}
   \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

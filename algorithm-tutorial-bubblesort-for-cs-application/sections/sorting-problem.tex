@@ -1,39 +1,23 @@
-\section{Sorting}
+\section{The Sorting Problem}
 
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Sorting}
-  The sorting problem:
-  \begin{description}
-	\item[Input:] A sequence of $n$ integers $A$:\seq{$a_1, a_2, \cdots, a_n$}.
-	\item[Output:] $A$ sorted {\small (non-decreasing order)}.
-		% A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
-  \end{description}
-
-  \[
-	3\quad 1\quad 4\quad 2\quad \Longrightarrow 1\quad 2\quad 3\quad 4
-  \]
-
-  % sortable
-  % A little more formalism: ordering relation ``$<$'' on $A$.
-
-  % \vspace{0.20cm}
-  % $\forall a, b, c \in A$,
-  % \begin{description}[Transitivity:]
-  %   \item[Trichotomy:] $a < b, a = b, a > b$
-  %   \item[Transitivity:] $a < b \land b < c \implies a < c$
-  % \end{description}
-\end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Algorithms}
   % \begin{center}
   %   An algorithm is a sequence of operations \\
   %   that transform the input into the output.
   % \end{center}
+  \begin{center}
+	What is an algorithm? \qquad \pause What is computation?
+  \end{center}
+
+  \pause
+
   \fignocaption{width = 0.50\textwidth}{figs/algorithm-def.pdf}
 
   \pause
+  \vspace{-0.60cm}
   \begin{center}
-	\textcolor{red}{\bf Correctness!}
+	\textcolor{red}{Correctness!}
   \end{center}
 
   \pause
@@ -54,42 +38,95 @@
   \end{description}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Sorting}
+  The sorting problem:
+  \begin{description}
+	\item[Input:] A sequence of $n$ integers $A$:\seq{$a_1, a_2, \cdots, a_n$}.
+	\item[Output:] A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
+  \end{description}
+
+  \[
+	3\quad 1\quad 4\quad 2\quad \Longrightarrow 1\quad 2\quad 3\quad 4
+  \]
+
+  % sortable
+  % A little more formalism: ordering relation ``$<$'' on $A$.
+
+  % \vspace{0.20cm}
+  % $\forall a, b, c \in A$,
+  % \begin{description}[Transitivity:]
+  %   \item[Trichotomy:] $a < b, a = b, a > b$
+  %   \item[Transitivity:] $a < b \land b < c \implies a < c$
+  % \end{description}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
   \[
 	A = a_1\quad a_2\quad \ldots\quad a_n.
   \]
 
   \begin{center}
-	If $i < j$ and $a_{i} > a_{j}$, then $(a_i, a_j)$ is an \textcolor{red}{\bf inversion}.
+	If $i < j$ and $a_{i} > a_{j}$, then $(a_i, a_j)$ is an \textcolor{red}{\bf inversion}.\\[8pt] \pause
+	\textcolor{blue}{Adjacent} inversion: $(a_i, a_{i+1})$
   \end{center}
-
-  \fignocaption{width = 0.35\textwidth}{figs/inversions-example.pdf}
 
   \pause
-  \vspace{0.20cm}
+  \vspace{-0.50cm}
 
-  \begin{center}
-	\textcolor{blue}{\bf Adjacent} inversion: $j = i + 1$
-  \end{center}
+  \begin{columns}
+	\column{0.50\textwidth}
+	  \fignocaption{width = 0.50\textwidth}{figs/inversions-example.pdf}
+	\column{0.50\textwidth}
+	{\small
+	  \begin{center}
+		\#inversions = 3\\
+		\#adjacent inversions = 2
+	  \end{center}
+	}
+  \end{columns}
+
+  \pause
+  \begin{columns}
+	\column{0.50\textwidth}
+	  \fignocaption{width = 0.50\textwidth}{figs/inversions-example-nonincreasing.pdf}
+	\column{0.50\textwidth}
+	{\small
+	  \begin{center}
+		\#inversions = 3 + 2 + 1 = 6\\
+		\#adjacent inversions = 3
+	  \end{center}
+	}
+  \end{columns}
+
+  \pause
+  \begin{columns}
+	\column{0.50\textwidth}
+	  \fignocaption{width = 0.50\textwidth}{figs/inversions-example-nondecreasing.pdf}
+	\column{0.50\textwidth}
+	{\small
+	  \begin{center}
+		\#inversions = 0\\
+		\#adjacent inversions = 0
+	  \end{center}
+	}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
+  \begin{center}
+	\fbox{\textcolor{blue}{Theorem:} $A$ is sorted $\iff$ $A$ has no adjacent inversions.}
+  \end{center}
+
   \begin{align*}
-	A \text{ is sorted } &\Longrightarrow A \text{ has no inversions} \\
-	  \onslide<2->{&\Longrightarrow A \text{ has no adjacent inversions}.}
+	\onslide<2->{A \text{ is sorted } &\Longrightarrow A \text{ has no inversions} \\}
+	  \onslide<3->{&\Longrightarrow A \text{ has no adjacent inversions}.}
   \end{align*}
 
   \vspace{-0.50cm}
 
   \begin{align*}
-	\onslide<3->{A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\}
-	  \onslide<4->{&\Longrightarrow A \text{ is sorted}.}
+	\onslide<4->{A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\}
+	  \onslide<5->{&\Longrightarrow A \text{ is sorted}.}
   \end{align*}
-
-  \vspace{0.30cm}
-
-  \begin{center}
-	\onslide<5->{\fbox{$A$ is sorted $\iff$ $A$ has no adjacent inversions.}}
-  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
