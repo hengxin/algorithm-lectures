@@ -42,13 +42,17 @@
   The sorting problem:
   \begin{description}
 	\item[Input:] A sequence of $n$ integers $A$:\seq{$a_1, a_2, \cdots, a_n$}.
-	\item[Output:] A permutation \seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
+	\item[Output:] A permutation $A'$:\seq{$a'_1, a'_2, \ldots, a'_n$} of $A$ \emph{s.t.} $a'_1 \le a'_2 \le \cdots \le a'_n$ {\small (non-decreasing order)}.
   \end{description}
 
   \[
 	3\quad 1\quad 4\quad 2\quad \Longrightarrow 1\quad 2\quad 3\quad 4
   \]
 
+  \pause
+  \vspace{0.50cm}
+
+  \fignocaption{width = 0.50\textwidth}{figs/sorting-alg-def.pdf}
   % sortable
   % A little more formalism: ordering relation ``$<$'' on $A$.
 
@@ -62,7 +66,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Inversions}
   \[
-	A = a_1\quad a_2\quad \ldots\quad a_n.
+	A = a_1\quad a_2\quad \cdots\quad a_i\quad \cdots\quad a_j\quad \cdots\quad a_n.
   \]
 
   \begin{center}
@@ -118,15 +122,14 @@
   \end{center}
 
   \begin{align*}
-	\onslide<2->{A \text{ is sorted } &\Longrightarrow A \text{ has no inversions} \\}
-	  \onslide<3->{&\Longrightarrow A \text{ has no adjacent inversions}.}
+	\onslide<2->{A \text{ is sorted } \Longrightarrow A \text{ has no adjacent inversions}.}
   \end{align*}
 
   \vspace{-0.50cm}
 
   \begin{align*}
-	\onslide<4->{A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\}
-	  \onslide<5->{&\Longrightarrow A \text{ is sorted}.}
+	\onslide<3->{A \text{ has no adjacent inversions } &\Longrightarrow \forall i \in [1,n-1]: a_{i} \le a_{i+1} \\}
+	  \onslide<4->{&\Longrightarrow A \text{ is sorted}.}
   \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

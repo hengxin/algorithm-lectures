@@ -4,7 +4,7 @@
 \begin{frame}{Time Complexity of Bubble Sort}
   \begin{itemize}
 	\setlength{\itemsep}{10pt}
-	\item Finiteness is NOT enough $\implies$ Quantitative finiteness
+	\item Finiteness is NOT enough $\implies$ Quantifying finiteness
 	  \pause
 	\item Time on real computers varies $\implies$ \#Ops on our model:
 	  \vspace{5pt}
@@ -15,11 +15,11 @@
 		\item[$|C|:$] \#Comparisons \hfill ({\bf if} $a_{i} > a_{i+1}$)
 		\item[$|S|:$] \#Swaps  \hfill ($\textsc{Swap}(a_{i}, a_{i+1})$)
 	  \end{description}
-	  \pause
-	  \[
-	    |C| \ge |S|
-	  \]
-	  \vspace{-0.50cm}
+	  % \pause
+	  % \[
+	  %   |C| \ge |S|
+	  % \]
+	  % \vspace{-0.50cm}
 	  \pause
 	\item Different inputs $\implies$ $|C|$ and $|S|$ vary:
 	  \vspace{5pt}
@@ -50,11 +50,11 @@
 	\[
 	  \text{\textcolor{red}{Worst-case: }} n\quad n-1\; \cdots\; 1
 	\]}
-  \uncover<5->{
-	\[
-	  \#\text{inversions} = (n-1) + (n-2) + \cdots + 1 = \frac{n^2 - n}{2}.
-	\]
-  }
+  % \uncover<5->{
+  %   \[
+  %     \#\text{inversions} = (n-1) + (n-2) + \cdots + 1 = \frac{n^2 - n}{2}.
+  %   \]
+  % }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$|S|:$ \#Swaps (Average-case Analysis)\footnote{An exercise: what is $|C|$ (\#Comparisions) in average?}}
@@ -62,16 +62,15 @@
   \begin{enumerate}
 	\item The input is a random permutation (``average input'')
 	  \pause
-	\item All numbers are all different (for simplicity)
+	\item All numbers are different (for simplicity)
   \end{enumerate}
 
   \pause
 
   \begin{center}
-	\fbox{$\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
+	\fbox{\textcolor{blue}{Lemma:} $\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
   \end{center}
 
-  \pause
   \[
 	|S| = \textcolor{red}{\mathbb{E}(\#\text{inversions})}
   \]
@@ -86,8 +85,8 @@
 	  \end{array}\right.\\[3pt]}
 	\onslide<1->{X &= \sum_{1 \le i < n} \sum_{i < j \le n} I_{ij}\qquad\quad (\text{\#inversions}) \\[3pt]}
 	\onslide<2->{\mathbb{E}(X) &= \mathbb{E}(\sum_{i} \sum_{j>i} I_{ij})}\onslide<3->{= \sum_{i} \sum_{j>i} \mathbb{E}(I_{ij})\quad (\text{linearity of expectation})\\[3pt]}
-	\onslide<4->{\mathbb{E}(I_{ij}) &= \mathbb{P}\set{I_{ij} = 1} = \frac{1}{2}\qquad (a_i \neq a_j; \text{half: } a_i < a_j, \text{half: } a_i > a_j) \\[3pt]}
-	\onslide<5->{\mathbb{E}(X) &= \sum_{i} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4}} \onslide<6->{\textcolor{red}{{}={} O(n^2)}}
+	\onslide<4->{\mathbb{E}(I_{ij}) &= \mathbb{P}\set{I_{ij} = 1}} \onslide<5->{{}={} \frac{1}{2}\qquad (a_i \neq a_j; \text{half: } a_i < a_j, \text{half: } a_i > a_j) \\[3pt]}
+	\onslide<6->{\mathbb{E}(X) &= \sum_{i} \sum_{i<j} \frac{1}{2} = \binom{n}{2} \cdot \frac{1}{2} = \frac{n(n-1)}{4} \textcolor{red}{{}={} O(n^2)}}
   \end{align*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

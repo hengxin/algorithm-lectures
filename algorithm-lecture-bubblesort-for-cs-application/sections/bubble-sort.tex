@@ -6,6 +6,14 @@
   \pause
 
   \input{algs/bubble-sort-basic-idea-overlay}
+
+  \vspace{0.30cm}
+  \uncover<5->{
+    \begin{center}
+	  Finiteness $\implies$ \textcolor{red}{Correctness}.\\[8pt]
+	  \fbox{\textcolor{blue}{Theorem:} $A$ is sorted $\iff$ $A$ has no adjacent inversions.}
+    \end{center}
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Definiteness}
@@ -31,6 +39,12 @@
   % \[
   %   5\quad 3\quad 1\quad 6\quad 7\quad 2\quad 4\quad 8
   % \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Optimizing Bubble Sort (I)\footnote{See Appendix for ``Optimizing Bubble Sort (II)''.}}
+  After each ``{\bf for}'' loop, one more element is bubbled up to its final position.
+
+  \input{algs/bubble-sort-alg-mfp}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bubble Sort: Finiteness}
@@ -62,28 +76,13 @@
   \pause
   \begin{center}
 	\textcolor{blue}{$-1: (a_{i},a_{i+1})$}\\[3pt] \pause 
-	\textcolor{red}{${}+{}0:$} relative order between any other two elements does not change!\\[3pt] \pause
-	$(a_k, a_l), (a_m, a_n), \textcolor{red}{(a_k, a_i), (a_i, a_m)}$
+	\textcolor{red}{${}+{}0:$} relative order between any other two elements does not change!\\[3pt]
+	$\langle a_k, a_l \rangle, \langle a_m, a_n \rangle, \textcolor{red}{\langle a_k, a_i \rangle, \langle a_i, a_m \rangle}$
   \end{center}
 
   \pause
   \begin{center}
-	\fbox{$\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
+	\fbox{\textcolor{blue}{Lemma:} $\textsc{Swap}(a_{i}, a_{i+1}) \implies -1 \text{ inversion}$}
   \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Bubble Sort: Correctness}
-  \begin{align*}
-	\onslide<1->{\text{\textcolor{blue}{\bf Finiteness }}}
-	  \onslide<2->{&\implies \exists \text{ loop : no swaps} \\[3pt]}
-	  \onslide<3->{&\implies A \text{ has no adjacent inversions any more} \\[3pt]}
-	  \onslide<4->{&\implies A \text{ is already sorted.}}
-  \end{align*}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Optimizing Bubble Sort (I)\footnote{See Appendix for ``Optimizing Bubble Sort (II)''.}}
-  After each ``{\bf for}'' loop, one more element is bubbled up to its final position.
-
-  \input{algs/bubble-sort-alg-mfp}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
